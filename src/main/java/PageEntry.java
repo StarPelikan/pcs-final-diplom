@@ -1,3 +1,4 @@
+import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import java.util.LinkedHashMap;
@@ -29,7 +30,12 @@ public class PageEntry implements Comparable<PageEntry> {
         map.put("pdfName", pdfName);
         map.put("page", page);
         map.put("count", count);
-        JSONObject result = new JSONObject(map);
+        JSONObject result = null;
+        try {
+            result = new JSONObject(map);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
         return result.toString();
     }

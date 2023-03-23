@@ -35,6 +35,7 @@ public class BooleanSearchEngine implements SearchEngine {
                         database.get(word).add(pageEntry);
 
                     }
+                    database.values().forEach(Collections::sort);
                 }
             }
         }
@@ -43,8 +44,10 @@ public class BooleanSearchEngine implements SearchEngine {
 
     @Override
     public List<PageEntry> search(String word) {
-        List<PageEntry> result = database.get(word);
-        Collections.sort(result);
+        List<PageEntry> result = new ArrayList<>();
+        if (database.containsKey(word.toLowerCase())) {
+            return database.get(word);
+        }
         return result;
     }
 }
