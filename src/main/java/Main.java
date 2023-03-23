@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         try (ServerSocket serverSocket = new ServerSocket(8989)) {
             BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"));
-            System.out.println(engine.search(",банан"));
+            System.out.println(engine.search("консьерж"));
 
             while (true) {
                 try (
